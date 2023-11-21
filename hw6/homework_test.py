@@ -92,15 +92,10 @@ def test_readable_function():
 
 
 def fix_text_func(func, *args):
-    func = func.__name__.replace('_', ' ')
-    params = " ["
-    for idx, param in enumerate(args):
-        params += param
-        if idx != len(args) - 1:
-            params += ", "
-        else:
-            params += "]"
-    actual_result = func.title() + params
+    func = func.__name__.replace('_', ' ').title()
+    params = ", ".join(args)
+    actual_result = f"{func} [{params}]"
+    print(actual_result)
     return actual_result
 
 
